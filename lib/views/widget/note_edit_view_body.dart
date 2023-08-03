@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/views/widget/note_appdar.dart';
 
+import 'edit_note_view_body.dart';
+
 class NoteEditViewBody extends StatelessWidget {
   const NoteEditViewBody({super.key});
 
@@ -12,13 +14,10 @@ class NoteEditViewBody extends StatelessWidget {
       child: Column(
         children: [
           CustomAppBar(
-            iconData: FontAwesomeIcons.magnifyingGlass,
-            title: 'Edit',
+            iconData: FontAwesomeIcons.check,
+            title: 'Edit Note',
           ),
-          Expanded(
-              child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-          )),
+          EditNoteViewBody(),
         ],
       ),
     );
