@@ -9,20 +9,19 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      
       maxLines: maxLine,
-      cursorColor: AppColor.primaryColor,
+      cursorColor: AppColor.kPrimaryColor,
       decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: const TextStyle(color: AppColor.primaryColor),
+          hintStyle: const TextStyle(color: AppColor.kPrimaryColor),
           enabledBorder: customBorder(),
-          focusedBorder: customBorder(AppColor.primaryColor)),
+          focusedBorder: customBorder(AppColor.kPrimaryColor)),
     );
   }
 
   OutlineInputBorder customBorder([color]) {
     return OutlineInputBorder(
-      borderSide: BorderSide(color: color ?? Colors.white ),
+      borderSide: BorderSide(color: color ?? Colors.white),
     );
   }
 }
