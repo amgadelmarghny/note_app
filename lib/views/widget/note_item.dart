@@ -3,9 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/views/note_edit_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({
-    super.key,
-  });
+  const NoteItem({super.key});
 
   @override
   Widget build(BuildContext context) {

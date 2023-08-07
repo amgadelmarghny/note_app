@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:note_app/bloc/notes_cubit/notes_cubit.dart';
+import 'package:note_app/models/note_model.dart';
 import 'note_appdar.dart';
 import 'note_item.dart';
 
-class NoteViewBody extends StatelessWidget {
+class NoteViewBody extends StatefulWidget {
   const NoteViewBody({super.key});
+
+  @override
+  State<NoteViewBody> createState() => _NoteViewBodyState();
+}
+
+class _NoteViewBodyState extends State<NoteViewBody> {
+  @override
+  initState() {
+    BlocProvider.of<NotesCubit>(context).fetchNote();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +30,19 @@ class NoteViewBody extends StatelessWidget {
             iconData: FontAwesomeIcons.magnifyingGlass,
             title: 'Note',
           ),
-          Expanded(
-            child: ListView.builder(
-                itemCount: 2,
-                itemBuilder: (context, index) {
-                  return const NoteItem();
-                }),
+          BlocConsumer<NotesCubit, NotesState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              List<NoteModel> notesList =
+                  BlocProvider.of<NotesCubit>(context).noteList ?? [];
+              return Expanded(
+                child: ListView.builder(
+                    itemCount: notesList.length,
+                    itemBuilder: (context, index) {
+                      return const NoteItem();
+                    }),
+              );
+            },
           )
         ],
       ),
