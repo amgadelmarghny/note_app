@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import '../../app constants/app_color.dart';
 
 class CustomButtomShet extends StatelessWidget {
-  const CustomButtomShet({super.key, this.onTap  });
-final void Function()? onTap;
+  const CustomButtomShet({super.key, this.onTap, this.isLoading = false});
+  final void Function()? onTap;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,12 +17,20 @@ final void Function()? onTap;
           color: AppColor.kPrimaryColor,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Center(
-          child: Text(
-            'Add',
-            style: TextStyle(
-                color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
-          ),
+        child: Center(
+          child: isLoading
+              ? const SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: CircularProgressIndicator(),
+                )
+              : const Text(
+                  'Add',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
+                ),
         ),
       ),
     );

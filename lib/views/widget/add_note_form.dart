@@ -21,9 +21,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Form(
+        key: formKey,
         child: Column(
           children: [
             CustomTextField(
@@ -45,17 +45,27 @@ class _AddNoteFormState extends State<AddNoteForm> {
             const SizedBox(
               height: 100,
             ),
-            CustomButtomShet(
-              onTap: () {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                  NoteModel noteModel = NoteModel(title: title!, dateCreated: DateTime.now().toString(), subTitle: subTitle!, color: Colors.blue.value) ;
-                  BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-                } else {
-                  setState(() {
-                    autovalidateMode = AutovalidateMode.always;
-                  });
-                }
+            BlocBuilder<AddNoteCubit, AddNoteState>(
+              builder: (context, state) {
+                return CustomButtomShet(
+                  isLoading: state is AddNoteLoading ? true : false,
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      NoteModel noteModel = NoteModel(
+                        title: title!,
+                        dateCreated: DateTime.now().toString(),
+                        subTitle: subTitle!,
+                        color: Colors.blue.value,
+                      );
+                      BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                    } else {
+                      setState(() {
+                        autovalidateMode = AutovalidateMode.always;
+                      });
+                    }
+                  },
+                );
               },
             ),
             const SizedBox(
