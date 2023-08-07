@@ -13,28 +13,31 @@ class AddNoteSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNoteCubit, AddNoteState>(
-      listener: (context, state) {
-        if (state is AddNotefailure) {
-          snackBar(context, text: state.errMessage);
-        }
-        if (state is AddNoteSuccessfull) {
-          Navigator.pop(context);
-        }
-      },
-      builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: state is AddNoteLoading ? true : false,
-          child: const Padding(
-            padding: EdgeInsets.only(
-              top: 40,
-              right: 16,
-              left: 16,
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state is AddNotefailure) {
+            snackBar(context, text: state.errMessage);
+          }
+          if (state is AddNoteSuccessfull) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is AddNoteLoading ? true : false,
+            child: const Padding(
+              padding: EdgeInsets.only(
+                top: 40,
+                right: 16,
+                left: 16,
+              ),
+              child: AddNoteForm(),
             ),
-            child: AddNoteForm(),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
