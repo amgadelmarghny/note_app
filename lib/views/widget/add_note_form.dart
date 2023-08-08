@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:note_app/models/note_model.dart';
+import 'package:note_app/views/widget/widget%20componant/list_view_color.dart';
 
 import '../../bloc/add_note_cubit/add_note_cubit.dart';
 import 'widget componant/custom_buttom_sheet.dart';
@@ -17,7 +18,6 @@ class AddNoteForm extends StatefulWidget {
 }
 
 class _AddNoteFormState extends State<AddNoteForm> {
-  
   String? title, subTitle;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   final GlobalKey<FormState> formKey = GlobalKey();
@@ -26,6 +26,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Form(
+        autovalidateMode: autovalidateMode,
         key: formKey,
         child: Column(
           children: [
@@ -45,12 +46,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
               },
               maxLine: 5,
             ),
-            const SizedBox(
-              height: 100,
-            ),
+            const ListViewColor(),
             BlocBuilder<AddNoteCubit, AddNoteState>(
               builder: (context, state) {
                 return CustomButtomShet(
+                  text: 'Add',
                   isLoading: state is AddNoteLoading ? true : false,
                   onTap: () {
                     validathionMeghod(context);
@@ -68,11 +68,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
   }
 
   void validathionMeghod(BuildContext context) {
-     if (formKey.currentState!.validate()) {
+    if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       var currentDate = DateTime.now();
-      var formatedCurrentDate =
-          DateFormat('dd-mm-yyyy').format(currentDate);
+      var formatedCurrentDate = DateFormat('dd-mm-yyyy').format(currentDate);
       NoteModel noteModel = NoteModel(
         title: title!,
         dateCreated: formatedCurrentDate,
