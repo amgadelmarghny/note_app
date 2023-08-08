@@ -53,23 +53,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 return CustomButtomShet(
                   isLoading: state is AddNoteLoading ? true : false,
                   onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      formKey.currentState!.save();
-                      var currentDate = DateTime.now();
-                      var formatedCurrentDate =
-                          DateFormat('dd-mm-yyyy').format(currentDate);
-                      NoteModel noteModel = NoteModel(
-                        title: title!,
-                        dateCreated: formatedCurrentDate,
-                        subTitle: subTitle!,
-                        color: Colors.blue.value,
-                      );
-                      BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-                    } else {
-                      setState(() {
-                        autovalidateMode = AutovalidateMode.always;
-                      });
-                    }
+                    validathionMeghod(context);
                   },
                 );
               },
@@ -81,5 +65,25 @@ class _AddNoteFormState extends State<AddNoteForm> {
         ),
       ),
     );
+  }
+
+  void validathionMeghod(BuildContext context) {
+     if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      var currentDate = DateTime.now();
+      var formatedCurrentDate =
+          DateFormat('dd-mm-yyyy').format(currentDate);
+      NoteModel noteModel = NoteModel(
+        title: title!,
+        dateCreated: formatedCurrentDate,
+        subTitle: subTitle!,
+        color: Colors.blue.value,
+      );
+      BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+    } else {
+      setState(() {
+        autovalidateMode = AutovalidateMode.always;
+      });
+    }
   }
 }
