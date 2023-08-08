@@ -39,7 +39,9 @@ class _NoteViewBodyState extends State<NoteViewBody> {
                 child: ListView.builder(
                     itemCount: notesList.length,
                     itemBuilder: (context, index) {
-                      return const NoteItem();
+                      return NoteItem(
+                        note: notesList[index],
+                      );
                     }),
               );
             },
