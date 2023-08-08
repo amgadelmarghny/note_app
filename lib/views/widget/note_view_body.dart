@@ -33,6 +33,7 @@ class _NoteViewBodyState extends State<NoteViewBody> {
           BlocConsumer<NotesCubit, NotesState>(
             listener: (context, state) {},
             builder: (context, state) {
+              //noteList
               List<NoteModel> notesList =
                   BlocProvider.of<NotesCubit>(context).noteList ?? [];
               return Expanded(
