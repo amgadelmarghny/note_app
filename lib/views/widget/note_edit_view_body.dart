@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:note_app/views/widget/note_appdar.dart';
+import 'package:note_app/views/widget/widget%20componant/custom_appdar.dart';
 
-import 'edit_note_view_body.dart';
+import 'widget componant/custom_text_field.dart';
 
 class NoteEditViewBody extends StatelessWidget {
   const NoteEditViewBody({super.key});
@@ -17,7 +17,26 @@ class NoteEditViewBody extends StatelessWidget {
             iconData: FontAwesomeIcons.check,
             title: 'Edit Note',
           ),
-          EditNoteViewBody(),
+          Expanded(
+            child: SingleChildScrollView(
+                child: Column(
+              children: [
+                SizedBox(
+                  height: 30,
+                ),
+                CustomTextField(
+                  hintText: 'Title',
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                CustomTextField(
+                  hintText: 'context',
+                  maxLine: 5,
+                ),
+              ],
+            )),
+          ),
         ],
       ),
     );

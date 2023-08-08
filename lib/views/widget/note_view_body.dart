@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/bloc/notes_cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
-import 'note_appdar.dart';
+import 'widget componant/custom_appdar.dart';
 import 'note_item.dart';
 
 class NoteViewBody extends StatefulWidget {

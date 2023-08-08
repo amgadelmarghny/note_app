@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:note_app/models/note_model.dart';
 
 import '../../bloc/add_note_cubit/add_note_cubit.dart';
-import 'custom_buttom_sheet.dart';
-import 'custom_text_field.dart';
+import 'widget componant/custom_buttom_sheet.dart';
+import 'widget componant/custom_text_field.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -17,9 +17,11 @@ class AddNoteForm extends StatefulWidget {
 }
 
 class _AddNoteFormState extends State<AddNoteForm> {
+  
   String? title, subTitle;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   final GlobalKey<FormState> formKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
