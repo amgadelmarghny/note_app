@@ -46,7 +46,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
               },
               maxLine: 5,
             ),
+
             const ListViewColor(),
+            
             BlocBuilder<AddNoteCubit, AddNoteState>(
               builder: (context, state) {
                 return CustomButtomShet(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/bloc/add_note_cubit/add_note_cubit.dart';
 
 class ListViewColor extends StatefulWidget {
   const ListViewColor({super.key});
@@ -15,7 +17,7 @@ class _ListViewColorState extends State<ListViewColor> {
     Color(0xffDCB6D5),
     Color(0xffCF8BA9),
     Color(0xffB15E6C),
-  Color(0xffF2D7EE),
+    Color(0xffF2D7EE),
     Color(0xffD3BCC0),
     Color(0xffA5668B),
     Color(0xff69306D),
@@ -32,6 +34,7 @@ class _ListViewColorState extends State<ListViewColor> {
             return GestureDetector(
               onTap: () {
                 isChoice = index;
+                BlocProvider.of<AddNoteCubit>(context).color = color[index];
                 setState(() {});
               },
               child: ColorItem(
