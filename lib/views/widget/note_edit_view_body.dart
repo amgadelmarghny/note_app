@@ -5,7 +5,9 @@ import 'package:note_app/bloc/notes_cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/widget/widget%20componant/custom_appdar.dart';
 
+import '../../app constants/app_string.dart';
 import 'widget componant/custom_text_field.dart';
+import 'widget componant/list_view_color.dart';
 
 class NoteEditViewBody extends StatefulWidget {
   const NoteEditViewBody({super.key, required this.noteModel});
@@ -44,7 +46,7 @@ class _NoteEditViewBodyState extends State<NoteEditViewBody> {
                   onChange: (value) {
                     title = value;
                   },
-                  hintText:widget.noteModel.title,
+                  hintText: widget.noteModel.title,
                 ),
                 const SizedBox(
                   height: 50,
@@ -56,11 +58,53 @@ class _NoteEditViewBodyState extends State<NoteEditViewBody> {
                   hintText: widget.noteModel.subTitle,
                   maxLine: 5,
                 ),
+                EditNoteViewColorList(
+                  noteModel: widget.noteModel,
+                )
               ],
             )),
           ),
         ],
       ),
+    );
+  }
+}
+
+class EditNoteViewColorList extends StatefulWidget {
+  const EditNoteViewColorList({super.key, required this.noteModel});
+  final NoteModel noteModel;
+  @override
+  State<EditNoteViewColorList> createState() => _EditNoteViewColorListState();
+}
+
+class _EditNoteViewColorListState extends State<EditNoteViewColorList> {
+  late int isChoice;
+  @override
+  void initState() {
+    isChoice = AppString.kColor.indexOf(Color(widget.noteModel.color));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 38 * 3,
+      child: ListView.builder(
+          itemCount: AppString.kColor.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                isChoice = index;
+                widget.noteModel.color = AppString.kColor[index].value;
+                setState(() {});
+              },
+              child: ColorItem(
+                isActive: isChoice == index,
+                color: AppString.kColor[index],
+              ),
+            );
+          }),
     );
   }
 }
