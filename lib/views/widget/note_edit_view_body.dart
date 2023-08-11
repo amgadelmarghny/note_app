@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:note_app/app%20constants/app_color.dart';
 import 'package:note_app/bloc/notes_cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/widget/widget%20componant/custom_appdar.dart';
@@ -81,7 +82,7 @@ class _EditNoteViewColorListState extends State<EditNoteViewColorList> {
   late int isChoice;
   @override
   void initState() {
-    isChoice = AppString.kColor.indexOf(Color(widget.noteModel.color));
+    isChoice = AppColor.kColor.indexOf(Color(widget.noteModel.color));
     super.initState();
   }
 
@@ -90,18 +91,18 @@ class _EditNoteViewColorListState extends State<EditNoteViewColorList> {
     return SizedBox(
       height: 38 * 3,
       child: ListView.builder(
-          itemCount: AppString.kColor.length,
+          itemCount: AppColor.kColor.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
                 isChoice = index;
-                widget.noteModel.color = AppString.kColor[index].value;
+                widget.noteModel.color = AppColor.kColor[index].value;
                 setState(() {});
               },
               child: ColorItem(
                 isActive: isChoice == index,
-                color: AppString.kColor[index],
+                color: AppColor.kColor[index],
               ),
             );
           }),
