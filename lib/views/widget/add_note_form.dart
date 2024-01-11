@@ -46,9 +46,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               },
               maxLine: 5,
             ),
-
             const ListViewColor(),
-            
             BlocBuilder<AddNoteCubit, AddNoteState>(
               builder: (context, state) {
                 return CustomButtomShet(
@@ -72,8 +70,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
   void validathionMeghod(BuildContext context) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      var currentDate = DateTime.now();
-      var formatedCurrentDate = DateFormat('dd-mm-yyyy').format(currentDate);
+      
+      var formatedCurrentDate = DateFormat('dd-mm-yyyy').format(DateTime.now());
       NoteModel noteModel = NoteModel(
         title: title!,
         dateCreated: formatedCurrentDate,
