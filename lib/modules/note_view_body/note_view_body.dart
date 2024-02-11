@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:note_app/bloc/notes_cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
-import 'widget componant/custom_appdar.dart';
-import 'note_item.dart';
+import 'package:note_app/shared/bloc/notes_cubit/notes_cubit.dart';
+import 'package:note_app/shared/componant/app_bar/custom_appbar.dart';
+import '../note_item/note_item.dart';
 
 class NoteViewBody extends StatefulWidget {
   const NoteViewBody({super.key});
@@ -31,20 +31,31 @@ class _NoteViewBodyState extends State<NoteViewBody> {
             title: 'Note',
           ),
           BlocBuilder<NotesCubit, NotesState>(
-           
             builder: (context, state) {
-              //noteList
               List<NoteModel> notesList =
                   BlocProvider.of<NotesCubit>(context).noteList ?? [];
-              return Expanded(
-                child: ListView.builder(
+              if (notesList.isEmpty) {
+                return const Expanded(
+                  child: Center(
+                    child: Text(
+                      'Please add note',
+                      style: TextStyle(fontSize: 24),
+                    ),
+                  ),
+                );
+              } else {
+                return Expanded(
+                  child: ListView.builder(
                     itemCount: notesList.length,
                     itemBuilder: (context, index) {
                       return NoteItem(
                         note: notesList[index],
+                        index: index,
                       );
-                    }),
-              );
+                    },
+                  ),
+                );
+              }
             },
           )
         ],

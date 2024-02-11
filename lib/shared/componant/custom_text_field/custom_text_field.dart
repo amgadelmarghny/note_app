@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/app_constants/app_color.dart';
-
+import 'package:note_app/shared/app_constants/app_color.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
-      {super.key, this.maxLine = 1, required this.hintText, this.onSaved, this.onChange});
+      {super.key,
+      this.maxLine = 1,
+      this.hintText,
+      this.onSaved,
+      this.onChange,
+      this.textEditingController});
   final int? maxLine;
-  final String hintText;
+  final String? hintText;
   final void Function(String?)? onSaved;
   final void Function(String)? onChange;
-
+  final TextEditingController? textEditingController;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -23,6 +27,7 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChange,
       onSaved: onSaved,
       maxLines: maxLine,
+      controller: textEditingController,
       cursorColor: AppColor.kPrimaryColor,
       decoration: InputDecoration(
         hintText: hintText,

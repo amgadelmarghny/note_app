@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:note_app/app%20constants/app_string.dart';
+import 'package:note_app/shared/app_constants/app_string.dart';
 import 'package:note_app/models/note_model.dart';
 
 part 'notes_state.dart';

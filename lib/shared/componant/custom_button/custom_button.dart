@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../app_constants/app_color.dart';
+import '../../app_constants/app_color.dart';
 
-class CustomButtomSheet extends StatelessWidget {
-  const CustomButtomSheet({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     super.key,
     this.onTap,
     this.isLoading = false,

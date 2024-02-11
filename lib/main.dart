@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:note_app/app%20constants/app_string.dart';
+import 'package:note_app/shared/app_constants/app_string.dart';
 import 'package:note_app/models/note_model.dart';
-import 'package:note_app/simble_bloc_observer.dart';
-import 'package:note_app/views/note_view.dart';
-
-import 'bloc/notes_cubit/notes_cubit.dart';
+import 'package:note_app/shared/bloc/notes_cubit/notes_cubit.dart';
+import 'package:note_app/shared/bloc/simble_bloc_observer.dart';
+import 'package:note_app/layout/note_view.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -27,7 +25,7 @@ class NoteApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          fontFamily: GoogleFonts.poppins().fontFamily,
+          fontFamily: 'Poppins',
           useMaterial3: true,
           brightness: Brightness.dark,
           hintColor: Colors.grey,

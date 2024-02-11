@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/bloc/add_note_cubit/add_note_cubit.dart';
-
-import '../../../app_constants/app_color.dart';
+import 'package:note_app/shared/bloc/add_note_cubit/add_note_cubit.dart';
+import '../../app_constants/app_color.dart';
 import 'color_item.dart';
 
 class ListViewColor extends StatefulWidget {
@@ -39,4 +38,3 @@ class _ListViewColorState extends State<ListViewColor> {
     );
   }
 }
-

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widget/show_note_sheet.dart';
+import 'show_note_sheet.dart';
 
 void showmodalBottomSheet(BuildContext context) {
     showModalBottomSheet(
