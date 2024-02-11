@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../app constants/app_color.dart';
+import '../../../app_constants/app_color.dart';
 
-class CustomButtomShet extends StatelessWidget {
-  const CustomButtomShet(
-      {super.key, this.onTap, this.isLoading = false, required this.text});
+class CustomButtomSheet extends StatelessWidget {
+  const CustomButtomSheet({
+    super.key,
+    this.onTap,
+    this.isLoading = false,
+    required this.text,
+  });
   final void Function()? onTap;
   final bool isLoading;
   final String text;
@@ -29,9 +33,10 @@ class CustomButtomShet extends StatelessWidget {
               : Text(
                   text,
                   style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600),
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
         ),
       ),
