@@ -69,7 +69,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
   void validathionMeghod(BuildContext context) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-
       var formatedCurrentDate = DateFormat('dd-mm-yyyy').format(DateTime.now());
       NoteModel noteModel = NoteModel(
         title: title!,
