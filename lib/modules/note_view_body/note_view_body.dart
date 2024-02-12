@@ -30,7 +30,7 @@ class _NoteViewBodyState extends State<NoteViewBody> {
             iconData: FontAwesomeIcons.magnifyingGlass,
             title: 'Note',
           ),
-          BlocBuilder<NotesCubit, NotesState>(
+          BlocBuilder<NotesCubit, NotesStates>(
             builder: (context, state) {
               List<NoteModel> notesList =
                   BlocProvider.of<NotesCubit>(context).noteList ?? [];

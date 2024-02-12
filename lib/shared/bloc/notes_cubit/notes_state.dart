@@ -1,9 +1,9 @@
 part of 'notes_cubit.dart';
 
-sealed class NotesState {}
+sealed class NotesStates {}
 
-final class NotesInitial extends NotesState {}
+final class NotesInitial extends NotesStates {}
 
-final class NotesSuccessful extends NotesState {}
+final class NotesSuccessful extends NotesStates {}
 
-
+final class BritnessChangedState extends NotesStates {}
