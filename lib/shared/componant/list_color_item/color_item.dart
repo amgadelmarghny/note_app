@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/shared/bloc/notes_cubit/notes_cubit.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isActive, required this.color});
@@ -11,7 +13,9 @@ class ColorItem extends StatelessWidget {
       child: isActive
           ? CircleAvatar(
               radius: 38,
-              backgroundColor: Colors.white,
+              backgroundColor: BlocProvider.of<NotesCubit>(context).isLight
+                  ? Colors.black54
+                  : Colors.white,
               child: CircleAvatar(
                 radius: 34,
                 backgroundColor: color,

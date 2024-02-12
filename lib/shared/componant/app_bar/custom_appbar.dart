@@ -29,7 +29,7 @@ class CustomAppBar extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: Colors.white.withOpacity(.09),
+                color: Colors.grey.withOpacity(.35),
               ),
               child: IconButton(
                 onPressed: () {
@@ -44,7 +44,7 @@ class CustomAppBar extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: Colors.white.withOpacity(.09),
+                color: Colors.grey.withOpacity(.35),
               ),
               child: IconButton(
                 onPressed: onPressed,
