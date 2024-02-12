@@ -21,9 +21,9 @@ class NotesCubit extends Cubit<NotesStates> {
     if (fromCash != null) {
       isLight = fromCash;
       emit(BritnessChangedState());
-      
     } else {
       isLight = !isLight;
+      CashHelper.setCash('isLight', isLight);
       emit(BritnessChangedState());
     }
   }

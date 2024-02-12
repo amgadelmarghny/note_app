@@ -22,7 +22,7 @@ abstract class CashHelper {
     }
   }
 
-  static Object? getCash<T>(String key) {
+  static dynamic getCash<T>(String key) {
     return sharedPreferences!.get(key);
   }
 }
