@@ -16,42 +16,45 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NotesStates>(
       builder: (context, state) {
-        return Row(
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 32,
-                fontFamily: 'null',
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Row(
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 32,
+                  fontFamily: 'null',
+                ),
               ),
-            ),
-            const Spacer(),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.grey.withOpacity(.35),
+              const Spacer(),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.grey.withOpacity(.35),
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    BlocProvider.of<NotesCubit>(context).changeBritness();
+                  },
+                  icon: const Icon(Icons.brightness_6_outlined),
+                ),
               ),
-              child: IconButton(
-                onPressed: () {
-                  BlocProvider.of<NotesCubit>(context).changeBritness();
-                },
-                icon: const Icon(Icons.brightness_6_outlined),
+              const SizedBox(
+                width: 7,
               ),
-            ),
-            const SizedBox(
-              width: 5,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.grey.withOpacity(.35),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.grey.withOpacity(.35),
+                ),
+                child: IconButton(
+                  onPressed: onPressed,
+                  icon: Icon(iconData),
+                ),
               ),
-              child: IconButton(
-                onPressed: onPressed,
-                icon: Icon(iconData),
-              ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );

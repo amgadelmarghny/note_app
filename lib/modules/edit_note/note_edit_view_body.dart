@@ -24,7 +24,7 @@ class _NoteEditViewBodyState extends State<NoteEditViewBody> {
     subTitleController.text = widget.noteModel.subTitle;
 
     return Padding(
-      padding: const EdgeInsets.only(top: 50, left: 16, right: 16),
+      padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
       child: Column(
         children: [
           CustomAppBar(

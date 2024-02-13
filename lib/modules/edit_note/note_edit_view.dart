@@ -4,11 +4,14 @@ import 'package:note_app/modules/edit_note/note_edit_view_body.dart';
 
 class NoteEditView extends StatelessWidget {
   const NoteEditView({super.key, required this.noteModel});
-final NoteModel noteModel;
+  final NoteModel noteModel;
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: NoteEditViewBody(noteModel: noteModel,),
+    return Scaffold(
+      appBar: AppBar(),
+      body: NoteEditViewBody(
+        noteModel: noteModel,
+      ),
     );
   }
 }

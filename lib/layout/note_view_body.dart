@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/shared/bloc/notes_cubit/notes_cubit.dart';
 import 'package:note_app/shared/componant/app_bar/custom_appbar.dart';
-import '../note_item/note_item.dart';
+import '../modules/note_item/note_item.dart';
 
 class NoteViewBody extends StatefulWidget {
   const NoteViewBody({super.key});
@@ -23,7 +23,7 @@ class _NoteViewBodyState extends State<NoteViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50, left: 16, right: 16),
+      padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
       child: Column(
         children: [
           const CustomAppBar(
@@ -34,18 +34,10 @@ class _NoteViewBodyState extends State<NoteViewBody> {
             builder: (context, state) {
               List<NoteModel> notesList =
                   BlocProvider.of<NotesCubit>(context).noteList ?? [];
-              if (notesList.isEmpty) {
-                return const Expanded(
-                  child: Center(
-                    child: Text(
-                      'Please add note',
-                      style: TextStyle(fontSize: 24),
-                    ),
-                  ),
-                );
-              } else {
+              if (notesList.isNotEmpty) {
                 return Expanded(
                   child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
                     itemCount: notesList.length,
                     itemBuilder: (context, index) {
                       return NoteItem(
@@ -53,6 +45,15 @@ class _NoteViewBodyState extends State<NoteViewBody> {
                         index: index,
                       );
                     },
+                  ),
+                );
+              } else {
+                return const Expanded(
+                  child: Center(
+                    child: Text(
+                      'Please add note',
+                      style: TextStyle(fontSize: 24),
+                    ),
                   ),
                 );
               }
