@@ -24,7 +24,7 @@ class NoteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool? isLight = CashHelper.getCash('isLight') ;
+    bool? isLight = CashHelper.getCash('isLight');
     return BlocProvider(
       create: (context) => NotesCubit()..changeBritness(fromCash: isLight),
       child: BlocBuilder<NotesCubit, NotesStates>(
